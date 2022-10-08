@@ -42,7 +42,7 @@ function UserReports() {
       title: "Verdict",
       dataIndex: "verdict",
       render: (text, record) => <>{record.result.verdict}</>,
-    }
+    },
   ];
 
   const getData = async () => {
@@ -51,7 +51,6 @@ function UserReports() {
       const response = await getAllReportsByUser();
       if (response.success) {
         setReportsData(response.data);
-        const allQuestions = [...response.data.result.correctAnswers, ...response.data.result.wrongAnswers];
       } else {
         message.error(response.message);
       }
@@ -71,8 +70,6 @@ function UserReports() {
       <PageTitle title="Reports" />
       <div className="divider"></div>
       <Table columns={columns} dataSource={reportsData} />
-
-    
     </div>
   );
 }
